@@ -146,6 +146,11 @@ var App = React.createClass({
 // Header
 
 var Header = React.createClass({
+
+  propTypes: {
+    tagline: React.PropTypes.string.isRequired
+  },
+
   render: function() {
     return (
       <header className="top">
@@ -172,6 +177,10 @@ var Header = React.createClass({
 // Fish
 
 var Fish = React.createClass({
+
+  propTypes: {
+    details: React.PropTypes.object.isRequired
+  },
 
   render: function() {
     var details = this.props.details
@@ -207,7 +216,14 @@ var Fish = React.createClass({
 // ---------------------------------------------------------------------------
 // Order
 
+
 var Order = React.createClass({
+
+  propTypes: {
+    fishes: React.PropTypes.object.isRequired,
+    order: React.PropTypes.object.isRequired,
+    removeFromOrder: React.PropTypes.func.isRequired
+  },
 
   render: function() {
     var orderIds = Object.keys(this.props.order)
@@ -257,9 +273,16 @@ var Order = React.createClass({
 
 
 // ---------------------------------------------------------------------------
-// Order
+// LineItem
 
 var LineItem = React.createClass({
+
+  propTypes: {
+    index: React.PropTypes.string.isRequired,
+    fishes: React.PropTypes.object.isRequired,
+    order: React.PropTypes.object.isRequired,
+    removeFromOrder: React.PropTypes.func.isRequired
+  },
 
   render: function() {
     var key = this.props.index
@@ -312,6 +335,14 @@ var LineItem = React.createClass({
 
 var Inventory = React.createClass({
 
+  propTypes: {
+    fishes: React.PropTypes.object.isRequired,
+    addFish: React.PropTypes.func.isRequired,
+    removeFish: React.PropTypes.func.isRequired,
+    loadSamples: React.PropTypes.func.isRequired,
+    linkState: React.PropTypes.func.isRequired
+  },
+
   render: function() {
     return (
       <div className="inventory">
@@ -351,6 +382,10 @@ var Inventory = React.createClass({
 // Add Fish
 
 var AddFishForm = React.createClass({
+
+  propTypes: {
+    addFish: React.PropTypes.func.isRequired
+  },
 
   render: function() {
     return (
