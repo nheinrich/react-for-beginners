@@ -5,11 +5,11 @@
       -ms-transform: translateX(-120%);
           transform: translateX(-120%);
   max-height: 0;
-  padding: 0 !important;
+  padding: 0rem !important;
 }
 .order-enter.order-enter-active {
   max-height: 60px;
-  padding: 2rem 0 !important;
+  padding: 1rem 0 !important;
   background: #fff;
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
@@ -418,7 +418,7 @@ ul {
 }
 ul.order li {
   border-bottom: 1px solid #000;
-  padding: 2rem 0;
+  padding: 1rem 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

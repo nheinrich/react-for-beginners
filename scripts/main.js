@@ -16,6 +16,8 @@ var createBrowserHistory = require("history/lib/createBrowserHistory")
 
 var Catalyst = require("react-catalyst")
 
+var CSSTransitionGroup = require("react-addons-css-transition-group")
+
 var h = require("./helpers")
 
 
@@ -225,7 +227,13 @@ var Order = React.createClass({
         <h2 className="order-title">
           Your Order
         </h2>
-        <ul className="order">
+        <CSSTransitionGroup
+          className="order"
+          component="ul"
+          transitionName="order"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
           {orderIds.map(this.renderLineItem)}
           <li className="total">
             <strong>
@@ -233,7 +241,7 @@ var Order = React.createClass({
             </strong>
             {h.formatPrice(total)}
           </li>
-        </ul>
+        </CSSTransitionGroup>
       </div>
     )
   },
@@ -268,13 +276,23 @@ var LineItem = React.createClass({
     }
 
     return (
-      <li>
-        {lbs} lbs.
-        {fish.name} -
+      <li key={key}>
+        <span>
+          <CSSTransitionGroup
+            className="count"
+            component="span"
+            transitionName="count"
+            transitionLeaveTimeout={200}
+            transitionEnterTimeout={200}
+          >
+            <span key={lbs}>{lbs}</span>
+          </CSSTransitionGroup>
+          lbs of {fish.name}
+          {this.removeButton(key)}
+        </span>
         <span className="price">
           {h.formatPrice(lbs * fish.price)}
         </span>
-        {this.removeButton(key)}
       </li>
     )
   },
