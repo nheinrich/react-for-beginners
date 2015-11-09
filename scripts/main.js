@@ -17,7 +17,7 @@ import StorePicker from "./components/StorePicker"
 import NotFound from "./components/NotFound"
 
 
-// ---------------i------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // Routes
 
 var routes = (
