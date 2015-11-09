@@ -6,7 +6,7 @@ import ReactDOM from "react-dom"
 
 // Routing
 import { Router, Route } from "react-router"
-import createBrowserHistory from "history/lib/createBrowserHistory"
+import { createHistory } from "history"
 
 
 // ---------------------------------------------------------------------------
@@ -17,11 +17,11 @@ import StorePicker from "./components/StorePicker"
 import NotFound from "./components/NotFound"
 
 
-// ---------------------------------------------------------------------------
+// ---------------i------------------------------------------------------------
 // Routes
 
 var routes = (
-  <Router history={createBrowserHistory()}>
+  <Router history={createHistory()}>
     <Route path="/" component={StorePicker} />
     <Route path="/store/:storeId" component={App} />
     <Route path="*" component={NotFound} />

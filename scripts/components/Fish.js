@@ -5,7 +5,6 @@ import h from "../helpers"
 
 
 // ---------------------------------------------------------------------------
-// Fish
 
 var Fish = React.createClass({
 

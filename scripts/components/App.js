@@ -7,7 +7,7 @@ import React from "react"
 import Rebase from "re-base"
 const base = Rebase.createClass("https://fresh-seafood-market.firebaseio.com/")
 
-// Binding
+// Two-way Binding
 import Catalyst from "react-catalyst"
 
 // Components

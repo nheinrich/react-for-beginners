@@ -2,8 +2,8 @@
 
 import React from "react"
 import CSSTransitionGroup from "react-addons-css-transition-group"
-import h from "../helpers"
 import LineItem from "./LineItem"
+import h from "../helpers"
 
 
 // ---------------------------------------------------------------------------
@@ -58,7 +58,6 @@ var Order = React.createClass({
       <LineItem key={key} index={key} {...this.props} />
     )
   }
-
 
 })
 
