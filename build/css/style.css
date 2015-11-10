@@ -660,6 +660,42 @@ button.twitter:after,
 input[type=submit].twitter:after {
   background: #2c8dd0;
 }
+.store-list {
+  background: #fff;
+  max-width: 500px;
+  margin: 50px auto 100px;
+  padding: 2rem;
+  border: 2px solid #000;
+}
+.store-list li {
+  text-align: center;
+}
+.store-list button {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.authenticate {
+  text-align: center;
+}
+.authenticate a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.ReactModal__Overlay {
+  z-index: 100;
+}
+.ReactModal__Overlay .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.ReactModal__Overlay form {
+  text-align: center;
+}
+.ReactModal__Overlay input {
+  display: inline-block;
+}
 .store-selector {
   background: #fff;
   max-width: 500px;

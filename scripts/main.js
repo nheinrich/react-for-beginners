@@ -12,8 +12,8 @@ import { createHistory } from "history"
 // ---------------------------------------------------------------------------
 // Components
 
+import Landing from "./components/Landing"
 import App from "./components/App"
-import StorePicker from "./components/StorePicker"
 import NotFound from "./components/NotFound"
 
 
@@ -22,7 +22,7 @@ import NotFound from "./components/NotFound"
 
 var routes = (
   <Router history={createHistory()}>
-    <Route path="/" component={StorePicker} />
+    <Route path="/" component={Landing} />
     <Route path="/store/:storeId" component={App} />
     <Route path="*" component={NotFound} />
   </Router>

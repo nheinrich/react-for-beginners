@@ -1,7 +1,15 @@
 // ---------------------------------------------------------------------------
 
+// Config
+import config from "../config"
+
+// React
 import React from "react"
 import autobind from "autobind-decorator"
+
+// Firebase
+import Firebase from "firebase"
+const ref = new Firebase(config.firebaseUrl)
 
 // Components
 import AddFishForm from "./AddFishForm"
@@ -12,15 +20,60 @@ import AddFishForm from "./AddFishForm"
 @autobind
 class Inventory extends React.Component {
 
+  constructor() {
+    super()
+    this.state = {
+      uid: ""
+    }
+  }
+
+  authenticate() {
+    ref.createUser({
+
+    })
+  }
+
   render() {
+    if (!this.state.uid) {
+      return this.renderLogin()
+    }
+
+    if (this.state.uid !== this.state.owner) {
+      return this.renderLogout()
+    }
+
+    if (this.state.uid === this.state.owner) {
+      return (
+        <div className="inventory">
+          {this.logoutButton()}
+          <h2>Inventory</h2>
+          {Object.keys(this.props.fishes).map(this.renderInventory)}
+          <AddFishForm {...this.props} />
+          <button onClick={this.props.loadSamples}>
+            Load Sample Fishes
+          </button>
+        </div>
+      )
+    }
+  }
+
+  renderLogin() {
     return (
-      <div className="inventory">
+      <nav className="login">
         <h2>Inventory</h2>
-        {Object.keys(this.props.fishes).map(this.renderInventory)}
-        <AddFishForm {...this.props} />
-        <button onClick={this.props.loadSamples}>
-          Load Sample Fishes
+        <p>Sign in to manage your inventory</p>
+        <button onClick={this.authenticate.bind(this, "")} className="twitter">
+          Sign In
         </button>
+      </nav>
+    )
+  }
+
+  renderLogout() {
+    return (
+      <div>
+        <p>Sorry you aren't the owner of this store.</p>
+        {this.logoutButton()}
       </div>
     )
   }
@@ -44,6 +97,11 @@ class Inventory extends React.Component {
     )
   }
 
+  logoutButton() {
+    return (
+      <button>Log Out!</button>
+    )
+  }
 }
 
 
@@ -54,7 +112,8 @@ Inventory.propTypes = {
   addFish: React.PropTypes.func.isRequired,
   removeFish: React.PropTypes.func.isRequired,
   loadSamples: React.PropTypes.func.isRequired,
-  linkState: React.PropTypes.func.isRequired
+  linkState: React.PropTypes.func.isRequired,
+  params: React.PropTypes.object.isRequired
 }
 
 

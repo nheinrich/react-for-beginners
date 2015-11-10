@@ -1,5 +1,8 @@
 // ---------------------------------------------------------------------------
 
+// Config
+import config from "../config"
+
 // React
 import React from "react"
 import ReactMixin from "react-mixin"
@@ -7,7 +10,7 @@ import autobind from "autobind-decorator"
 
 // Firebase
 import Rebase from "re-base"
-const base = Rebase.createClass("https://fresh-seafood-market.firebaseio.com/")
+const base = Rebase.createClass(config.firebaseUrl)
 
 // Two-way Binding
 import Catalyst from "react-catalyst"
@@ -17,8 +20,6 @@ import Header from "./Header"
 import Fish from "./Fish"
 import Order from "./Order"
 import Inventory from "./Inventory"
-import NotFound from "./NotFound"
-import StorePicker from "./StorePicker"
 
 
 // ---------------------------------------------------------------------------
@@ -27,8 +28,7 @@ import StorePicker from "./StorePicker"
 class App extends React.Component {
 
   constructor() {
-    super();
-
+    super()
     this.state = {
       fishes: {},
       order: {}
@@ -75,6 +75,7 @@ class App extends React.Component {
           removeFish={this.removeFish}
           loadSamples={this.loadSamples}
           linkState={this.linkState.bind(this)}
+          params={this.props.params}
         />
       </div>
     )
