@@ -2,21 +2,18 @@
 
 import React from "react"
 import CSSTransitionGroup from "react-addons-css-transition-group"
+import autobind from "autobind-decorator"
+
+// Helpers
 import h from "../helpers"
 
 
 // ---------------------------------------------------------------------------
 
-var LineItem = React.createClass({
+@autobind
+class LineItem extends React.Component {
 
-  propTypes: {
-    index: React.PropTypes.string.isRequired,
-    fishes: React.PropTypes.object.isRequired,
-    order: React.PropTypes.object.isRequired,
-    removeFromOrder: React.PropTypes.func.isRequired
-  },
-
-  render: function() {
+  render() {
     var key = this.props.index
     var fish = this.props.fishes[key]
     var lbs = this.props.order[key]
@@ -50,9 +47,9 @@ var LineItem = React.createClass({
         </span>
       </li>
     )
-  },
+  }
 
-  removeButton: function(key) {
+  removeButton(key) {
     return (
       <button onClick={this.props.removeFromOrder.bind(null, key)}>
         &times;
@@ -60,7 +57,17 @@ var LineItem = React.createClass({
     )
   }
 
-})
+}
+
+
+// ---------------------------------------------------------------------------
+
+LineItem.propTypes = {
+  index: React.PropTypes.string.isRequired,
+  fishes: React.PropTypes.object.isRequired,
+  order: React.PropTypes.object.isRequired,
+  removeFromOrder: React.PropTypes.func.isRequired
+}
 
 
 // ---------------------------------------------------------------------------

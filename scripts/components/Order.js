@@ -1,22 +1,22 @@
 // ---------------------------------------------------------------------------
 
 import React from "react"
+import autobind from "autobind-decorator"
 import CSSTransitionGroup from "react-addons-css-transition-group"
+
+// Components
 import LineItem from "./LineItem"
+
+// Helpers
 import h from "../helpers"
 
 
 // ---------------------------------------------------------------------------
 
-var Order = React.createClass({
+@autobind
+class Order extends React.Component {
 
-  propTypes: {
-    fishes: React.PropTypes.object.isRequired,
-    order: React.PropTypes.object.isRequired,
-    removeFromOrder: React.PropTypes.func.isRequired
-  },
-
-  render: function() {
+  render() {
     var orderIds = Object.keys(this.props.order)
     var total = orderIds.reduce((prevTotal, key) => {
       var fish = this.props.fishes[key]
@@ -51,15 +51,24 @@ var Order = React.createClass({
         </CSSTransitionGroup>
       </div>
     )
-  },
+  }
 
-  renderLineItem: function(key) {
+  renderLineItem(key) {
     return (
       <LineItem key={key} index={key} {...this.props} />
     )
   }
 
-})
+}
+
+
+// ---------------------------------------------------------------------------
+
+Order.propTypes = {
+  fishes: React.PropTypes.object.isRequired,
+  order: React.PropTypes.object.isRequired,
+  removeFromOrder: React.PropTypes.func.isRequired
+}
 
 
 // ---------------------------------------------------------------------------

@@ -1,18 +1,18 @@
 // ---------------------------------------------------------------------------
 
 import React from "react"
+import autobind from "autobind-decorator"
+
+// Helpers
 import h from "../helpers"
 
 
 // ---------------------------------------------------------------------------
 
-var Fish = React.createClass({
+@autobind
+class Fish extends React.Component {
 
-  propTypes: {
-    details: React.PropTypes.object.isRequired
-  },
-
-  render: function() {
+  render() {
     var details = this.props.details
     var isAvailable = (details.status === "available") ? true : false
     var buttonText = (isAvailable ? "Add to Order" : "Sold Out")
@@ -33,14 +33,21 @@ var Fish = React.createClass({
         </button>
       </li>
     )
-  },
+  }
 
-  selectFish: function() {
+  selectFish() {
     var key = this.props.index
     this.props.addToOrder(key)
   }
 
-})
+}
+
+
+// ---------------------------------------------------------------------------
+
+Fish.propTypes = {
+  details: React.PropTypes.object.isRequired
+}
 
 
 // ---------------------------------------------------------------------------

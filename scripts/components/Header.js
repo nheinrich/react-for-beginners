@@ -5,13 +5,9 @@ import React from "react"
 
 // ---------------------------------------------------------------------------
 
-var Header = React.createClass({
+class Header extends React.Component {
 
-  propTypes: {
-    tagline: React.PropTypes.string.isRequired
-  },
-
-  render: function() {
+  render() {
     return (
       <header className="top">
         <h1>
@@ -30,7 +26,15 @@ var Header = React.createClass({
       </header>
     )
   }
-})
+
+}
+
+
+// ---------------------------------------------------------------------------
+
+Header.propTypes = {
+  tagline: React.PropTypes.string.isRequired
+}
 
 
 // ---------------------------------------------------------------------------

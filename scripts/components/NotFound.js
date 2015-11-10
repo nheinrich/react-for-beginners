@@ -5,9 +5,9 @@ import React from "react"
 
 // ---------------------------------------------------------------------------
 
-var NotFound = React.createClass({
+class NotFound extends React.Component {
 
-  render: function(){
+  render() {
     return (
       <div>
         <h1>Not Found</h1>
@@ -15,7 +15,7 @@ var NotFound = React.createClass({
     )
   }
 
-})
+}
 
 
 // ---------------------------------------------------------------------------
